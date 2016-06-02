@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Accessirona</title>
+        <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="all" />
+		<meta name="keywords" content="Mobilestore" />
+		<link href='http://fonts.googleapis.com/css?family=Londrina+Solid|Coda+Caption:800|Open+Sans' rel='stylesheet' type='text/css'>
+        <script src="~/js/jquery-1.3.2.min.js" type="text/javascript"></script>
+		<script src="~/js/jqzoom.pack.1.0.1.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="~/Content/jqzoom.css" type="text/css">
+		<script type="text/javascript">
+			$(function() {
+				$(".jqzoom").jqzoom();
+			});
+		</script>
+		<script>
+		$(document).ready(function(){
+			$(".menu_body").hide();
+			//toggle the componenet with class menu_body
+			$(".menu_head").click(function(){
+				$(this).next(".menu_body").slideToggle(600); 
+				var plusmin;
+				plusmin = $(this).children(".plusminus").text();
+				
+				if( plusmin == '+')
+				$(this).children(".plusminus").text('-');
+				else
+				$(this).children(".plusminus").text('+');
+			});
+		});
+		</script>
+	</head>
+
+
+	<body>
+        @Html.Partial("_header")
+       
+		<div class="wrap">
+		    <div class="clear"> </div>
+		    <div class="wrap">
+		    <div class="content">
+		    <div class="content-grids">
+		    	<div class="details-page">
+		    		<div class="back-links">
+		    			@*<ul>
+		    				<li><a href="#">Home</a><img src="~/images/arrow.png" alt=""></li>
+		    				<li><a href="#">Product</a><img src="~/images/arrow.png" alt=""></li>
+		    				<li><a href="#">Product-Details</a><img src="~/images/arrow.png" alt=""></li>
+		    			</ul>*@
+		    		</div>
+		    	</div>
+
+                @{
+                    
+		    	<div class="detalis-image">
+		    		<div id="content"> <a class="jqzoom" style="" title="Product-Name"> <img src="@Url.Content(Model.pic)" title="Product-Name" style="border: 1px solid #e5e5e5;"> </a>
+					</div>
+		    	</div>
+		    	<div class="detalis-image-details">
+		    		@*<div class="details-categories">
+		    			<ul>
+		    				<li><h3>Category:</h3></li>
+		    				<li class="active1"><a href="#"><span>Nokia Mobiles</span></a></li>
+		    				<li><a href="#">HTC Mobiles</a></li>
+		    				<li><a href="#">Iphone Mobiles</a></li>
+		    				<li><a href="#">Zen Mobiles</a></li>
+		    			</ul>
+		    		</div>*@<br />
+		    		<div class="brand-value">
+		    			<h3>@Model.name</h3>
+		    			<div class="left-value-details">
+			    			<ul>
+			    				<li>Price: </li>
+			    				<li><span>Rs.</span></li>
+			    				<li><h5>Rs. @Model.price</h5></li>
+			    				<br />
+			    				<li><p>Not rated</p></li>
+			    			</ul>
+		    			</div>
+		    			<div class="right-value-details">
+			    			<a href="#">Instock</a>
+			    			<p>No reviews</p>
+		    			</div>
+		    			<div class="clear"> </div>
+		    		</div>
+		    		<div class="brand-history">
+		    			<h3>Description : @Model.desc</h3>
+		    			<p>Not applicable yet.</p>
+                        @{
+                            if (Model.pic.Contains("mob"))
+                            {
+                                string s = @Model.mobId + ",mobile";
+                                
+                                                            
+                        <div class="list-group">
+                            <form action="~/Home/addToCart/@s">
+                                <input type="number" name="quantity" class="form-control" style="text-align:center" placeholder="Quantity" required />
+                                <button class="list-group-item">Add To Cart</button>
+                            </form>
+                            </div>
+                       <div class="list-group">
+                       <form action="~/Home/order/@Model.mobId">
+                                <button class="list-group-item"> Make Order</button>
+                            </form>
+                            
+                        </div>
+                        }
+                        if (Model.pic.Contains("laptops"))
+                            {
+                                string s = @Model.laptopId + ",laptop";
+                                
+                        <div class="list-group">
+                            <form action="~/Home/addToCart/@s">
+                                <input type="number" name="quantity" class="form-control" style="text-align:center" placeholder="Quantity" required />
+                                <button class="list-group-item">Add To Cart</button>
+                            </form>
+                        </div>
+                            <div class="list-group">
+
+                                <form action="~/Home/order/@Model.laptopId">
+                                    <button class="list-group-item"> Make Order</button>
+                                </form>
+
+                            </div>
+                        }
+                        
+                        }
+                    </div>
+		    		<div class="clear"> </div>
+		    		
+		    		</div>
+                    
+                }
+		    		<div class="clear"> </div>
+		    	<div class="menu_container">
+                    <div class="share">
+                        <ul>
+                            <li> <a href="#"><img src="~/images/facebook.png" title="facebook" /> FaceBook</a></li>
+                            <li> <a href="#"><img src="~/images/twitter.png" title="Twiiter" />Twiiter</a></li>
+                            <li> <a href="#"><img src="~/images/rss.png" title="Rss" />Rss</a></li>
+                        </ul>
+                    </div>
+
+					</div>
+			</div>
+			
+		    	</div>
+                <div class="content-sidebar">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="~/Home/samsung_mobiles">Samsung Mobiles</a></li>
+                        <li><a href="~/Home/Q_mobiles">Q-Mobiles</a></li>
+                        <li><a href="~/Home/G_five_mobiles">G-Five Mobiles</a></li>
+                        <li><a href="~/Home/htc_mobiles">HTC Mobiles</a></li>
+                        <li><a href="~/Home/dell_laptops">DELL Laptops</a></li>
+                        <li><a href="~/Home/samsung_laptops">Samsung Laptops</a></li>
+                        <li><a href="~/Home/apple_laptops">Apple Laptops</a></li>
+                        <li><a href="~/Home/hp_laptops">HP Laptops</a></li>
+                    </ul>
+                </div>
+		    </div>
+		    <div class="clear"> </div>
+		    </div>
+        @Html.Partial("_footer")
+	</body>
+</html>
+

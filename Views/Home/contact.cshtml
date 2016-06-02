@@ -1,0 +1,62 @@
+<body>
+    @Html.Partial("_header")
+
+		    <div class="clear"> </div>
+		    <div class="wrap">
+		    <div class="content">
+		    	<div class="section group">				
+				<div class="col span_1_of_3">
+					<div class="contact_info">
+			    	 	<h2>Find Us Here</h2>
+			    	 		<div class="map">
+					   			<iframe width="100%" height="175" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265&amp;output=embed"></iframe><br><small><a href="https://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265" style="color:#666;text-align:left;font-size:12px">View Larger Map</a></small>
+					   		</div>
+      				</div>
+      			<div class="company_address">
+				     	<h2>Company Information :</h2>
+						    	<p>Pucit New Campus,</p>
+						   		<p>Near SPARCO, Lahore,</p>
+						   		<p>PAKISTAN</p>
+				   		<p>Mobile:(00) 333 767 377</p>
+				   		<p>Fax: (000) 000 00 00 0</p>
+                      <p>Email Hashir: <span>bitf13a507@pucit.edu.pk</span></p>
+                      <p>Email Jan Sher: <span>bitf13a542@pucit.edu.pk</span></p>
+				   		<p>Follow on: <span>Facebook</span>, <span>Twitter</span></p>
+				   </div>
+				</div>				
+				<div class="col span_2_of_3">
+				  <div class="contact-form">
+				  	<h2>Contact Us</h2>
+					    <form action="~/Home/contactUs" method="get">
+                            <div class="form-group">
+                                <span><label>NAME</label></span>
+                                <span><input type="text" name="name" class="form-control" value="" required></span>
+                            </div>
+                            <div class="form-group">
+                                <span><label>E-MAIL</label></span>
+                                <span><input type="email" name="email" class="form-control" value="" required></span>
+                            </div>
+                            <div class="form-group">
+                                <span><label>MOBILE.NO</label></span>
+                                <span><input type="text" name="mobile" class="form-control" value="" required></span>
+                            </div>
+                            <div class="form-group">
+                                <span><label>Description</label></span>
+                                <textarea style="font-size:medium" name="disc" class="form-control" rows="5" required> </textarea>
+                            </div>
+						   <div>
+						   		<span><input type="submit" value="Submit"></span>
+						  </div>
+					    </form>
+				    </div>
+  				</div>				
+			  </div>
+			  	 <div class="clear"> </div>
+	</div>
+	<div class="clear"> </div>
+		    </div>
+		    </div>
+    @Html.Partial("_footer")
+	</body>
+</html>
+

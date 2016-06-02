@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "adminPanelSearch";
+}
+
+
+@using EADPostMid.Models;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Search </title>
+    <meta charset="utf‐8" />
+</head>
+<body>
+    @Html.Partial("_header")
+
+    @{
+        if (Session["login"] != "login")
+        {
+            <script>
+                @{
+            Response.Redirect("~/Home/loginP");
+                }
+                function myfun() {
+
+
+                    var i = document.getElementById('pass1').value;
+                    var j = document.getElementById('pass2').value;
+                    if (i != j) {
+                        alert("Beta Kidr?");
+                        alert("Passwords are not same!");
+                        return false;
+
+                    }
+                    return true;
+                }
+
+            </script>
+        }
+    }
+
+    <div class="clear"> </div>
+
+    <div class="wrap">
+        <div class="content">
+            <div class="content-grids">
+                <marquee direction="right"><h1 style="color: #94CB32">Search</h1></marquee>
+
+                    <div class="search-bar">
+                        <form action="~/Home/adminSearch" method="get">
+                            <input type="text" name="textBox" required><input type="submit" value="Search" />
+                            <br>  <br>                      <label>  Select Category: </label>
+                            <input type="radio" name="category" value="laptop" required /> Laptops&nbsp;&nbsp;
+                            <input type="radio" name="category" value="mobile" required /> Mobiles
+                            <br><br>
+                            <label>Search By:</label>
+                            <input type="radio" name="searchBy" value="id" required /> ID&nbsp;&nbsp;
+                            <input type="radio" name="searchBy" value="name" required /> Name
+                        </form>
+                    </div>
+</div>
+        </div>
+    </div>
+    @Html.Partial("_adminPanel")
+
+
+    <div class="clear"> </div>
+
+    <div class="clear"> </div>
+
+    @Html.Partial("_footer")
+
+</body>
+</html>

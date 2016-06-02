@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "adminP";
+}
+
+
+<head>
+    <title>ADMIN PAGE</title>
+    <script>
+        function myfun() {
+            var i = document.getElementById('pass1').value;
+            var j = document.getElementById('pass2').value;
+            if (i != j) {
+                alert("Beta Kidr?");
+                alert("Passwords are not same!");
+                return false;
+
+            }
+            return true;
+
+        }
+    </script>
+</head>
+
+
+<div class="clear"> </div>
+
+<div class="wrap">
+    <div class="content">
+        <div class="content-grids">
+            <div class="contact-form">
+                <marquee direction="right">
+                    <h1 style="text-align: left; color: #94CB32">Welcome Admin</h1>
+                    </marquee>
+                
+                    <form style="text-align:left" onsubmit="return myfun()" role="form" action="~/Home/updateAd" method="get">
+
+
+                        <div class="form-group">
+                            <label> Update Password:</label>
+                            <input type="password" class="form-control" id="pass1" name="pass">
+                        </div>
+
+                        <div class="form-group">
+                            <label> Confirm Password:</label> <input type="password" class="form-control" id="pass2" name="cpass">
+                        </div>
+
+                        <div>
+                            <input type="submit" value="submit">
+                        </div>
+
+                    </form>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+            @Html.Partial("_adminPanel")

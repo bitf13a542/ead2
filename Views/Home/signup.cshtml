@@ -1,0 +1,143 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Signup</title>
+    <meta charset="utf‐8" />
+</head>
+<body>
+    @Html.Partial("_header")
+
+    @{
+        @*<div class="clear"> </div>
+
+        <div style=" height:500px ; width:300px ; float:left">
+
+
+        </div>*@
+
+    if (Session["login"] != "login")
+    {
+
+        <script>
+            function myfun() {
+                var i = document.getElementById('pass1').value;
+                var j = document.getElementById('pass2').value;
+                if (i != j) {
+                    alert("Beta Kidr?");
+                    alert("Passwords are not same!");
+                    return false;
+
+                }
+                return true;
+
+            }
+        </script>
+
+
+        <div class="clear"> </div>
+
+<div class="wrap">
+    <div class="content">
+        <div class="content-grids">
+            <div class="contact-form">
+                <h2>Register</h2>
+
+                <form style="text-align:left" role="form" onsubmit="return myfun()" role="form" action="~/Home/adduser" method="get">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <span><input type="text" class="form-control" name="usname" placeholder="Full Name" pattern="[a-zA-Z\s]+" required /></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <span><input type="text" class="form-control" name="email" placeholder="abc@xyz.com" pattern=".{10,25}" required /></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <span><input type="password" class="form-control" id="pass1" name="pass" placeholder="at least 6 characters" pattern=".{6,20}" required /></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cpwd">confirm Password:</label>
+                        <span><input type="password" class="form-control" id="pass2" name="cpass" pattern=".{6,20}" required placeholder="atleast 6 characters"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mob">Mobile number :</label>
+                        <span><input type="text" class="form-control" name="mob" value="" pattern="[0-9]+" placeholder="0333-1234567" required></span>
+                    </div>
+
+                    <div>
+                        <span><input type="submit" value="Submit" onclick="myfun()"></span>
+
+                        <p>@ViewBag.Message</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+                @*<div class="container">
+              <h2>Vertical (basic) Form</h2>
+              <form role="form">
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="email" class="form-control" id="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                  <label for="pwd">Password:</label>
+                  <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox"> Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>*@
+
+
+                }
+                if (Session["login"] == "login" && Session["person"] == "admin")
+                {
+
+                @Html.Partial("adminP")
+
+                <div class="col span_2_of_3" style="float:left">
+                    <div class="contact-form">
+                        <form style="text-align:center" action="~/Home/logout" method="get">
+                            <div><span><input type="submit" value="Logout"></span></div>
+                        </form>
+                    </div>
+                </div>
+                }
+                else if (Session["login"] == "login" && Session["person"] == "user")
+                {
+                @Html.Partial("userP")
+                <div class="clear"> </div>
+
+                <div class="wrap">
+                    <div class="content">
+                        <div class="content-grids">
+                            <div class="contact-form">
+                                <form style="text-align:center" action="~/Home/logout" method="get">
+                                    <div><span><input type="submit" value="Logout"></span></div>
+                                </form>
+                            </div>
+                        </div>
+                     </div>
+
+                    </div>
+                        }
+                        }
+                        <div class="clear"> </div>
+
+                        <div class="clear"> </div>
+
+                        @Html.Partial("_footer")
+</body>
+</html>

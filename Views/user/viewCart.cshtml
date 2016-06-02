@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "viewCart";
+}
+@using EADPostMid.Models;
+
+@{
+    Session["page1"] = "viewCart";
+}
+
+<head>
+    <title>Shopping Cart</title>
+
+    <script>
+        @{
+            if (Session["login"] != "login")
+            {
+              Response.Redirect("~/Home/loginP");
+            }
+        }
+
+        function myfun() {
+            var i = document.getElementById('pass1').value;
+            var j = document.getElementById('pass2').value;
+            if (i != j) {
+                alert("Beta Kidr?");
+                alert("Passwords are not same!");
+                return false;
+
+            }
+            return true;
+
+        }
+    </script>
+</head>
+
+@Html.Partial("_header")
+
+<div class="clear"> </div>
+
+<div class="wrap">
+    <div class="content">
+        <div class="content-grids">
+            @{
+                <marquee direction="right"><h1 style="color: #94CB32">Shopping Cart</h1></marquee>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Cart ID</th>
+                            <th>User ID</th>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Date</th>
+                            <th>Email</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{
+                            List<carts> li = Model;
+
+                            foreach (var i in li)
+                            {                                
+                                <tr>
+                                    <td>@i.cartId</td>
+                                    <td>@i.userId</td>
+                                    <td>@i.productId</td>
+                                    <td>@i.productName</td>
+                                    <td>@i.quantity</td>
+                                    <td>@i.price</td>
+                                    @{
+                                string s = @i.date.ToString();
+
+                                string[] d = s.Split(' ');
+
+
+                                <td>@d[0]</td>
+                                    }
+                                    <td>@i.email</td>
+                                    <td>@i.type</td>
+
+                                </tr>
+                            }
+
+                        }
+
+                    </tbody>
+                </table>
+
+            }
+            <br>
+            <div class="list-group" style="text-align:center">
+                <form action="~/Home/makeOrderCart" method="get">
+                    <button style="text-align:center" type="submit" class="list-group-item">Make Order</button>
+                </form>
+             </div>
+
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_userPanel")
+
+<div class="clear"> </div>
+<div class="clear"> </div>
+
+@Html.Partial("_footer")

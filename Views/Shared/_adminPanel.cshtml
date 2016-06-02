@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "_adminPanel";
+}
+
+<div class="content-sidebar">
+    <h4>Admin Panel</h4>
+    <ul>
+        <li>
+            <div class="list-group">
+
+                <form action="~/Home/addMobiles" method="get">
+                    <button type="submit" class="list-group-item">Add Mobiles</button>
+                </form>
+                <form action="~/Home/addLaptops" method="get">
+                    <button type="submit" class="list-group-item">Add Laptops</button>
+                </form>
+
+                <form action="~/Home/loginP" method="get">
+                    <button type="submit" class="list-group-item">Update Password</button>
+                </form>
+                
+                <form action="~/Home/viewMobiles" method="get">
+                    <button type="submit" class="list-group-item">View All Mobiles</button>
+                </form>
+                <form action="~/Home/viewLaptops" method="get">
+                    <button type="submit" class="list-group-item">View All Laptops</button>
+                </form>
+                <form action="~/Home/viewOrders" method="get">
+                    <button type="submit" class="list-group-item">View All Orders</button>
+                </form>
+                <form action="~/Home/viewSales" method="get">
+                    <button type="submit" class="list-group-item">View All Sales</button>
+                </form>
+                <form action="~/Home/adminPanelSearch" method="get">
+                    <button type="submit" class="list-group-item">Search</button>
+                </form>
+
+
+                <form action="~/Home/logout" method="get">
+                    <button type="submit" class="list-group-item">Logout</button>
+                </form>
+
+            </div>
+        </li>
+
+    </ul>
+</div>

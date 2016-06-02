@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "userP";
+}
+
+@Html.Partial("_header")
+
+<script>
+    function myfun() {
+        var i = document.getElementById('pass1').value;
+        var j = document.getElementById('pass2').value;
+        if (i != j) {
+            alert("Beta Kidr?");
+            alert("Passwords are not same!");
+            return false;
+
+        }
+        return true;
+
+    }
+</script>
+
+<div class="clear"> </div>
+
+<div class="wrap">
+    <div class="content">
+        <div class="content-grids">
+            <div class="contact-form">
+
+                <marquee direction="right">
+                    <h2 style="text-align: center; color: #94CB32">Welcome @Session["user1"]</h2>
+                    </marquee>
+
+                    <form style="text-align:left" onsubmit="return myfun()" role="form" action="~/Home/updateUs" method="get">
+                        <div class="form-group">
+                            <span><label>Update Email ID:</label></span>
+                            <span><input type="text" class="form-control" name="email" placeholder="Email" required /></span>
+                        </div>
+
+                        <div class="form-group">
+                            <span><label>Update Password: </label></span>
+                            <span><input type="password" class="form-control" id="pass1" name="pass" placeholder="at least 6 characters" pattern=".{6,20}" required /></span>
+                        </div>
+
+                        <div class="form-group">
+                            <span><label>Confirm Password: </label></span>
+                            <span><input type="password" class="form-control" id="pass2" name="cpass" pattern=".{6,20}" required placeholder="atleast 6 characters"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <span><label>Update Mobile #: </label></span>
+                            <span><input type="text" name="mob" class="form-control" value="" pattern="[0-9]+" placeholder="0333-1234567" required></span>
+                        </div>
+
+                        <div>
+                            <span><input type="submit" value="Submit" onclick="myfun()"></span>
+                        </div>
+                    </form>
+
+                    @*<form style="text-align:right" action="~/Home/logout" method="get">
+                <div><span><input type="submit" value="Logout"></span></div>
+            </form>*@
+
+</div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_userPanel")
+
+<div class="clear"> </div>
+<div class="clear"> </div>
+
+@Html.Partial("_footer")

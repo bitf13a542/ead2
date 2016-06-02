@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Accessirona</title>
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/style1.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/jqzoom.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="keywords" content="Mobilestore" />
+    <link href='http://fonts.googleapis.com/css?family=Londrina+Solid|Coda+Caption:800|Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/Content/js/responsiveslides.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <script src="~/Content/js/responsiveslides.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script>
+        // You can also use "$(window).load(function() {"
+        $(function () {
+
+            // Slideshow 1
+            $("#slider1").responsiveSlides({
+                maxwidth: 1600,
+                speed: 600
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <!----start-Header---->
+        <div class="header">
+            <div class="search-bar">
+                @*<form>
+                    <input type="text"><input type="submit" value="Search" />
+                </form>*@
+            </div>
+            <div class="clear"> </div>
+            <div style="text-align:left"><img src="~/images/cartLogo.png" style="width:15%" />
+                @*<div style="height:100px">
+                    
+                    </div>*@
+                    <div class="header-top-nav" style="margin-top:60px">
+
+                        <ul>
+                            @*    <li style="text-align:left"><img src="~/images/cartLogo.png" style="width:70%" /></li>*@
+                            <li><a href="~/Home/signup">Register</a></li>
+                            <li><a href="~/Home/loginP">Login</a></li>
+                            <!--<li><a href="#">Develivery</a></li>
+                <li><a href="#">Checkout</a></li>
+                -->
+                            <li><a href="~/Home/loginP">My account</a></li>
+                            <li><a href="~/user/viewCart"><span>shopingcart&nbsp;&nbsp;&nbsp; :</span></a><label>&nbsp; @Session["count"]</label></li>
+                        </ul>
+                    </div>
+                </div>
+            <div class="clear"> </div>
+        </div>
+    </div>
+    <div class="clear"> </div>
+    <div class="top-header">
+        <div class="wrap">
+            <!----start-logo---->
+            @*<div class="logo">
+                <a href="~/Home/Index"><img src="~/images/logo1.jpg" title="logo" /></a>
+            </div>*@
+            <!----end-logo---->
+            <!----start-top-nav---->
+            <div class="top-nav">
+                <ul>
+                    @*<li><a href="~/Home/tryImg">Image Retrieval</a></li>*@
+                    <li><a href="~/Home/Index">Home</a></li>
+                    <li><a href="~/Home/about">About</a></li>
+                    @*<li><a href="~/Home/store">Store</a></li>*@
+                    <li><a href="~/Home/laptop">Laptops</a></li>
+                    <li><a href="~/Home/mobile">Mobiles</a></li>
+                    <!--<li><a href="~/Home/store">Featured</a></li>
+                    <li><a href="~/Home/blog">Blog</a></li>
+                    -->
+                    <li><a href="~/Home/contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="clear"> </div>
+        </div>
+    </div>
+    <!----End-top-nav---->
+    <!----End-Header---->
+</body>
+</html>

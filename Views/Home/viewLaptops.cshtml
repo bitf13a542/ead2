@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "viewLaptops";
+}
+
+@using EADPostMid.Models;
+
+<head>
+    <title>Laptops</title>
+    <script>
+        @{
+            if (Session["login"] != "login")
+            {
+              Response.Redirect("~/Home/loginP");
+            }
+        }
+
+        function myfun() {
+            var i = document.getElementById('pass1').value;
+            var j = document.getElementById('pass2').value;
+            if (i != j) {
+                alert("Beta Kidr?");
+                alert("Passwords are not same!");
+                return false;
+
+            }
+            return true;
+
+        }
+    </script>
+</head>
+
+@Html.Partial("_header")
+
+<div class="clear"> </div>
+
+<div class="wrap">
+    <div class="content">
+        <div class="content-grids">
+            @{
+                <marquee direction="right"><h1 style="color: #94CB32">Laptops</h1></marquee>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Discription</th>
+                            <th>Price</th>
+                            <th>Year</th>
+                            <th>Model</th>
+                            <th>RAM</th>
+                            <th>ROM</th>
+                            <th>Processor</th>
+                            <th>Display Size</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{
+                            List<laptops> li = Model;
+                            
+                            foreach (var i in li)
+                            {
+                                <tr>
+                                    <td>@i.laptopId</td>
+                                    <td>@i.name</td>
+                                    <td>@i.desc</td>
+                                    <td>@i.price</td>
+                                    <td>@i.year</td>
+                                    <td>@i.model</td>
+                                    <td>@i.ram</td>
+                                    <td>@i.rom</td>
+                                    <td>@i.processor</td>
+                                    <td>@i.display_size</td>
+
+                                    <td><form action="~/Home/editLaptops/@i.laptopId"><div class="list-group"><button class="list-group-item">Edit</button></div></form></td>
+                                    <td><form action="~/Home/deleteLaptops/@i.laptopId"><div class="list-group"><button class="list-group-item">Delete</button></div></form></td>
+                                
+                                </tr>
+                            }
+
+                        }
+
+                    </tbody>
+                </table>
+
+            }
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_adminPanel")
+<div class="clear"> </div>
+<div class="clear"> </div>
+
+@Html.Partial("_footer")

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "_userPanel";
+}
+
+<div class="content-sidebar">
+    <h4 style="color: #94CB32"> User Panel@*@Session["user1"]*@</h4>
+    <ul>
+        <li>
+            <div class="list-group">
+
+                <form action="~/Home/mobile" method="get">
+                    <button type="submit" class="list-group-item">Buy Mobiles</button>
+                </form>
+                <form action="~/Home/laptop" method="get">
+                    <button type="submit" class="list-group-item">Buy Laptops</button>
+                </form>
+
+                <form action="~/Home/loginP" method="get">
+                    <button type="submit" class="list-group-item">Update Password</button>
+                </form>
+
+                <form action="~/user/userSearch" method="get">
+                    <button type="submit" class="list-group-item">View Orders</button>
+                </form>
+
+                <form action="~/user/viewCart" method="get">
+                    <button type="submit" class="list-group-item">View Cart</button>
+                </form>
+
+                <form action="~/Home/logout" method="get">
+                    <button type="submit" class="list-group-item">Logout</button>
+                </form>
+
+
+
+            </div>
+        </li>
+
+    </ul>
+</div>

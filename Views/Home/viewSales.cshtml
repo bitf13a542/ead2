@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "viewSales";
+}
+
+@using EADPostMid.Models;
+
+<head>
+    <title>View Sales</title>
+
+    <script>
+        @{
+            if (Session["login"] != "login")
+            {
+              Response.Redirect("~/Home/loginP");
+            }
+        }
+
+        function myfun() {
+            var i = document.getElementById('pass1').value;
+            var j = document.getElementById('pass2').value;
+            if (i != j) {
+                alert("Beta Kidr?");
+                alert("Passwords are not same!");
+                return false;
+
+            }
+            return true;
+
+        }
+    </script>
+</head>
+
+@Html.Partial("_header")
+
+<div class="clear"> </div>
+
+<div class="wrap">
+    <div class="content">
+        <div class="content-grids">
+            @{
+                <marquee direction="right"> <h1 style="color: #94CB32">Sales</h1></marquee>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Sale ID</th>
+                            <th>order ID</th>
+                            <th>Product ID</th>
+                            <th>User ID</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Date</th>
+                            <th>Email</th>
+                            <th>Type</th>
+                            @*<th>Deliver</th>
+                            <th>Delete</th>*@
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @{
+                            List<Sales> li = Model;
+
+                            foreach (var i in li)
+                            {
+                                <tr>
+                                    <td>@i.saleId</td>
+                                    <td>@i.orderId</td>
+                                    <td>@i.productId</td>
+                                    <td>@i.userId</td>
+                                    <td>@i.productName</td>
+                                    <td>@i.quantity</td>
+                                    <td>@i.price</td>
+                                    @{
+                                string s = @i.date.ToString();
+
+                                string[] d = s.Split(' ');
+
+
+                                <td>@d[0]</td>
+                                    }
+                                    <td>@i.email</td>
+                                    <td>@i.type</td>
+                                    @*<td><form action="~/Home/deliverOrder/@i.orderId"><div class="list-group"><button class="list-group-item">Edit</button></div></form></td>
+                                    <td><form action="~/Home/deleteOrder/@i.orderId"><div class="list-group"><button class="list-group-item">Delete</button></div></form></td>*@
+                                </tr>
+                            }
+
+                        }
+
+                    </tbody>
+                </table>
+
+            }
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_adminPanel")
+
+<div class="clear"> </div>
+<div class="clear"> </div>
+
+@Html.Partial("_footer")

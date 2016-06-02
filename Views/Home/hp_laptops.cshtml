@@ -1,0 +1,481 @@
+﻿@{
+    ViewBag.Title = "hp_laptops";
+}
+<html>
+<body>
+    @Html.Partial("_header")
+
+
+
+    <div class="clear"> </div>
+
+
+    <div class="wrap">
+        <div class="content">
+            <div class="content-grids">
+
+                @{
+
+                    int count = 1, length = 0, remaining = 0;
+                    string path1 = "", path2 = "", path3 = "", path4 = "";
+                    double p1 = 0.0, p2 = 0.0, p3 = 0.0, p4 = 0.0;
+                    string n1 = "", n2 = "", n3 = "", n4 = "";
+
+
+                    foreach (var i in Model)
+                    {
+                        length++;
+                    }
+
+                    remaining = length % 4;
+
+                    int[] ar = new int[length];
+
+                    int c1 = 0, c2 = 0;
+
+                    @*<h1> hength is @length and remains is  @remaining</h1>*@
+
+                    foreach (var i in Model)
+                    {
+
+                        if (count % 4 == 1)
+                        {
+                            path1 = i.pic;
+                            n1 = i.name;
+                            p1 = i.price;
+                            //  c1 = i.mobId;
+                            ar[c1] = i.laptopId;
+                            if (c1 < length - 1)
+                            {
+                                c1++;
+                            }
+
+                            @*<h1>@path1</h1>*@
+                        }
+                        else if (count % 4 == 2)
+                        {
+                            path2 = i.pic;
+                            n2 = i.name;
+                            p2 = i.price;
+                            ar[c1] = i.laptopId;
+                            if (c1 < length - 1)
+                            {
+                                c1++;
+                            }
+                        }
+                        else if (count % 4 == 3)
+                        {
+                            path3 = i.pic;
+                            n3 = i.name;
+                            p3 = i.price;
+                            ar[c1] = i.laptopId;
+                            if (c1 < length - 1)
+                            {
+                                c1++;
+                            }
+                        }
+
+                        else if (count % 4 == 0)
+                        {
+                            path4 = i.pic;
+                            n4 = i.name;
+                            p4 = i.price;
+                            ar[c1] = i.laptopId;
+                            if (c1 < length - 1)
+                            {
+                                c1++;
+                            }
+                            @*<script>alert("i am 0 !")</script>*@
+
+                            <div class="section group">
+                                <div class="grid_1_of_4 images_1_of_4 products-info">
+                                    <img src="@Url.Content(path1)" style="height:180px">
+                                    <a href="~/Home/single/@ar[c2]">@n1</a>
+                                    <h3>Rs. @p1 </h3>
+                                    @{
+                            string s = @ar[c2] + ",laptop";
+
+                            <form action="~/Home/addToCart/@s" method="get">
+                                <input type="number" name="quantity" class="form-control" style="text-align:center" placeholder="Quantity" required />
+                                <button style="text-align:center" class="list-group-item" type="submit" value="Add To Cart">Add To Cart</button>
+                            </form>
+                                    }
+                                    @{c2++;}
+
+                                    @*<ul>
+                                            <li><a class="cart" href="~/Home/single"> </a></li>
+                                            <li><a class="i" href="~/Home/single"> </a></li>
+                                            <li><a class="Compar" href="~/Home/single"> </a></li>
+                                            <li><a class="Wishlist" href="~/Home/single"> </a></li>
+                                        </ul>*@
+                                </div>
+
+                                <div class="grid_1_of_4 images_1_of_4 products-info">
+                                    <img src="@Url.Content(path2)" style="height:180px">
+                                    <a href="~/Home/single/@ar[c2]">@n2</a>
+                                    <h3>Rs. @p2 </h3>
+                                    @{
+                            string s1 = @ar[c2] + ",laptop";
+
+                            <form action="~/Home/addToCart/@s1" method="get">
+                                <input type="number" name="quantity" class="form-control" style="text-align:center" placeholder="Quantity" required />
+                                <button style="text-align:center" class="list-group-item" type="submit" value="Add To Cart">Add To Cart</button>
+                            </form>
+                                    }
+                                    @{c2++;}
+                                    @*<ul>
+                                            <li><a class="cart" href="~/Home/single"> </a></li>
+                                            <li><a class="i" href="~/Home/single"> </a></li>
+                                            <li><a class="Compar" href="~/Home/single"> </a></li>
+                                            <li><a class="Wishlist" href="~/Home/single"> </a></li>
+                                        </ul>*@
+                                </div>
+
+                                <div class="grid_1_of_4 images_1_of_4 products-info">
+                                    <img src="@Url.Content(path3)" style="height:180px">
+                                    <a href="~/Home/single/@ar[c2]">@n3</a>
+                                    <h3>Rs.@p3 </h3>
+                                    @{
+                            string s2 = @ar[c2] + ",laptop";
+
+                            <form action="~/Home/addToCart/@s2" method="get">
+                                <input type="number" name="quantity" class="form-control" style="text-align:center" placeholder="Quantity" required />
+                                <button style="text-align:center" class="list-group-item" type="submit" value="Add To Cart">Add To Cart</button>
+                            </form>
+                                    }
+                                    @{c2++;}
+                                    @*<ul>
+                                            <li><a class="cart" href="~/Home/single"> </a></li>
+                                            <li><a class="i" href="~/Home/single"> </a></li>
+                                            <li><a class="Compar" href="~/Home/single"> </a></li>
+                                            <li><a class="Wishlist" href="~/Home/single"> </a></li>
+                                        </ul>*@
+                                </div>
+
+                                <div class="grid_1_of_4 images_1_of_4 products-info">
+                                    <img src="@Url.Content(path4)" style="height:180px">
+                                    <a href="~/Home/single/@ar[c2]">@n4</a>
+                                    <h3>Rs. @p4 </h3>
+                                    @{
+                            string s3 = @ar[c2] + ",laptop";
+
+                            <form action="~/Home/addToCart/@s3" method="get">
+                                <input type="number" name="quantity" class="form-control" style="text-align:center" placeholder="Quantity" required />
+                                <button style="text-align:center" class="list-group-item" type="submit" value="Add To Cart">Add To Cart</button>
+                            </form>
+                                    }
+                                    @{c2++;}
+                                    @*<ul>
+                                            <li><a class="cart" href="~/Home/single"> </a></li>
+                                            <li><a class="i" href="~/Home/single"> </a></li>
+                                            <li><a class="Compar" href="~/Home/single"> </a></li>
+                                            <li><a class="Wishlist" href="~/Home/single"> </a></li>
+                                        </ul>*@
+                                </div>
+
+
+                            </div>
+
+                        }
+                        count++;
+                        @*<img src="@Url.Content(i.pic)" width="300" />*@
+                    }
+                    if (remaining == 1)
+                    {
+                        <div class="section group">
+                            <div class="grid_1_of_4 images_1_of_4 products-info">
+                                <img src="@Url.Content(path1)" style="height:180px">
+                                <a href="~/Home/single/@ar[c1]">@n1</a>
+                                <h3>Rs. @p1 </h3>
+                                @{
+                        string s = @ar[c1] + ",laptop";
+
+                        <form action="~/Home/addToCart/@s" method="get">
+                            <input type="number" name="quantity" class="form-control" style="text-align:center" placeholder="Quantity" required />
+                            <button style="text-align:center" class="list-group-item" type="submit" value="Add To Cart">Add To Cart</button>
+                        </form>
+                                }
+                                @*<ul>
+                                        <li><a class="cart" href="~/Home/single"> </a></li>
+                                        <li><a class="i" href="~/Home/single"> </a></li>
+                                        <li><a class="Compar" href="~/Home/single"> </a></li>
+                                        <li><a class="Wishlist" href="~/Home/single"> </a></li>
+                                    </ul>*@
+                            </div>
+                        </div>
+                    }
+                    else if (remaining == 2)
+                    {
+                        <div class="section group">
+                            <div class="grid_1_of_4 images_1_of_4 products-info">
+                                <img src="@Url.Content(path1)" style="height:180px">
+                                <a href="~/Home/single/@ar[c1-1]">@n1</a>
+                                <h3>Rs. @p1 </h3>
+                                @{
+                        string s = @ar[c1 - 1] + ",laptop";
+
+                        <form action="~/Home/addToCart/@s" method="get">
+                            <input type="number" name="quantity" class="form-control" style="text-align:center" placeholder="Quantity" required />
+                            <button style="text-align:center" class="list-group-item" type="submit" value="Add To Cart">Add To Cart</button>
+                        </form>
+                                }
+
+
+                                @*<ul>
+                                        <li><a class="cart" href="~/Home/single"> </a></li>
+                                        <li><a class="i" href="~/Home/single"> </a></li>
+                                        <li><a class="Compar" href="~/Home/single"> </a></li>
+                                        <li><a class="Wishlist" href="~/Home/single"> </a></li>
+                                    </ul>*@
+                            </div>
+                            <div class="grid_1_of_4 images_1_of_4 products-info">
+                                <img src="@Url.Content(path2)" style="height:180px">
+                                <a href="~/Home/single/@ar[c1]">@n2</a>
+                                <h3>Rs. @p2 </h3>
+                                @{
+                        string s1 = @ar[c1] + ",laptop";
+
+                        <form action="~/Home/addToCart/@s1" method="get">
+                            <input type="number" name="quantity" class="form-control" style="text-align:center" placeholder="Quantity" required />
+                            <button style="text-align:center" class="list-group-item" type="submit" value="Add To Cart">Add To Cart</button>
+                        </form>
+                                }
+
+
+                                @*<ul>
+                                        <li><a class="cart" href="~/Home/single"> </a></li>
+                                        <li><a class="i" href="~/Home/single"> </a></li>
+                                        <li><a class="Compar" href="~/Home/single"> </a></li>
+                                        <li><a class="Wishlist" href="~/Home/single"> </a></li>
+                                    </ul>*@
+                            </div>
+                        </div>
+                    }
+                    else if (remaining == 3)
+                    {
+                        <div class="section group">
+                            <div class="grid_1_of_4 images_1_of_4 products-info">
+                                <img src="@Url.Content(path1)" style="height:180px">
+                                <a href="~/Home/single/@ar[c1-2]">@n1</a>
+                                <h3>Rs. @p1 </h3>
+                                @{
+                        string s = @ar[c1 - 2] + ",laptop";
+
+                        <form action="~/Home/addToCart/@s" method="get">
+                            <input type="number" name="quantity" class="form-control" style="text-align:center" placeholder="Quantity" required />
+                            <button style="text-align:center" class="list-group-item" type="submit" value="Add To Cart">Add To Cart</button>
+                        </form>
+                                }
+
+                                @*<ul>
+                                        <li><a class="cart" href="~/Home/single"> </a></li>
+                                        <li><a class="i" href="~/Home/single"> </a></li>
+                                        <li><a class="Compar" href="~/Home/single"> </a></li>
+                                        <li><a class="Wishlist" href="~/Home/single"> </a></li>
+                                    </ul>*@
+                            </div>
+                            <div class="grid_1_of_4 images_1_of_4 products-info">
+                                <img src="@Url.Content(path2)" style="height:180px">
+                                <a href="~/Home/single/@ar[c1-1]">@n2</a>
+                                <h3>Rs. @p2 </h3>
+                                @{
+                        string s1 = @ar[c1 - 1] + ",laptop";
+
+                        <form action="~/Home/addToCart/@s1" method="get">
+                            <input type="number" name="quantity" class="form-control" style="text-align:center" placeholder="Quantity" required />
+                            <button style="text-align:center" class="list-group-item" type="submit" value="Add To Cart">Add To Cart</button>
+                        </form>
+                                }
+
+
+                                @*<ul>
+                                        <li><a class="cart" href="~/Home/single"> </a></li>
+                                        <li><a class="i" href="~/Home/single"> </a></li>
+                                        <li><a class="Compar" href="~/Home/single"> </a></li>
+                                        <li><a class="Wishlist" href="~/Home/single"> </a></li>
+                                    </ul>*@
+                            </div>
+                            <div class="grid_1_of_4 images_1_of_4 products-info">
+                                <img src="@Url.Content(path3)" style="height:180px">
+                                <a href="~/Home/single/@ar[c1]">@n3</a>
+                                <h3>Rs. @p3 </h3>
+                                @{
+                        string s2 = @ar[c1] + ",laptop";
+
+                        <form action="~/Home/addToCart/@s2" method="get">
+                            <input type="number" name="quantity" class="form-control" style="text-align:center" placeholder="Quantity" required />
+                            <button style="text-align:center" class="list-group-item" type="submit" value="Add To Cart">Add To Cart</button>
+                        </form>
+                                }
+
+
+                                @*<ul>
+                                        <li><a class="cart" href="~/Home/single"> </a></li>
+                                        <li><a class="i" href="~/Home/single"> </a></li>
+                                        <li><a class="Compar" href="~/Home/single"> </a></li>
+                                        <li><a class="Wishlist" href="~/Home/single"> </a></li>
+                                    </ul>*@
+                            </div>
+
+                        </div>
+                    }
+
+                }
+            </div>
+        </div>
+    </div>
+
+    @*<div class="wrap">
+        <div class="content">
+            <div class="content-grids">
+
+                @{
+
+                    int count = 1, length = 0, remaining = 0;
+                    string path1 = "", path2 = "", path3 = "", path4 = "";
+                    double p1 = 0.0, p2 = 0.0, p3 = 0.0, p4 = 0.0;
+                    string n1 = "", n2 = "", n3 = "", n4 = "";
+
+
+                    foreach (var i in model)
+                    {
+                        length++;
+                    }
+
+                    remaining = length % 4;
+
+
+                    foreach (var i in model)
+                    {
+
+                        if (count % 4 == 1)
+                        {
+                            path1 = i.pic;
+                            n1 = i.name;
+                            p1 = i.price;
+                        }
+                        else if (count % 4 == 2)
+                        {
+                            path2 = i.pic;
+                            n2 = i.name;
+                            p2 = i.price;
+                        }
+                        else if (count % 4 == 3)
+                        {
+                            path3 = i.pic;
+                            n3 = i.name;
+                            p3 = i.price;
+                        }
+
+                        else if (count % 4 == 0)
+                        {
+                            path4 = i.pic;
+                            n4 = i.name;
+                            p4 = i.price;*@
+
+
+    @*<div class="section group">
+                                    <div class="grid_1_of_4 images_1_of_4 products-info">
+                                        <img src="@url.content(path1)" style="height:180px">
+                                        <a href="~/home/single">@n1</a>
+                                        <h3>rs. @p1 </h3>
+
+                                    </div>
+
+                                    <div class="grid_1_of_4 images_1_of_4 products-info">
+                                        <img src="@url.content(path2)" style="height:180px">
+                                        <a href="~/home/single">@n2</a>
+                                        <h3>rs. @p2 </h3>
+                                                                            </div>
+
+                                    <div class="grid_1_of_4 images_1_of_4 products-info">
+                                        <img src="@url.content(path3)" style="height:180px">
+                                        <a href="~/home/single">@n3</a>
+                                        <h3>rs.@p3 </h3>
+
+                                    </div>
+
+                                    <div class="grid_1_of_4 images_1_of_4 products-info">
+                                        <img src="@url.content(path4)" style="height:180px">
+                                        <a href="~/home/single">@n4</a>
+                                        <h3>rs. @p4 </h3>
+
+                                    </div>
+
+
+                                </div>
+
+                            }
+                            count++;
+                        }
+                        if (remaining == 1)
+                        {
+                            <div class="section group">
+                                <div class="grid_1_of_4 images_1_of_4 products-info">
+                                    <img src="@url.content(path1)" style="height:180px">
+                                    <a href="~/home/single">@n1</a>
+                                    <h3>rs. @p1 </h3>
+                                </div>
+                            </div>
+                        }
+                        else if (remaining == 2)
+                        {
+                            <div class="section group">
+                                <div class="grid_1_of_4 images_1_of_4 products-info">
+                                    <img src="@url.content(path1)" style="height:180px">
+                                    <a href="~/home/single">@n1</a>
+                                    <h3>rs. @p1 </h3>
+                                </div>
+                                <div class="grid_1_of_4 images_1_of_4 products-info">
+                                    <img src="@url.content(path2)" style="height:180px">
+                                    <a href="~/home/single">@n2</a>
+                                    <h3>rs. @p2 </h3>
+                                </div>
+                            </div>
+                        }
+                        else if (remaining == 3)
+                        {
+                            <div class="section group">
+                                <div class="grid_1_of_4 images_1_of_4 products-info">
+                                    <img src="@url.content(path1)" style="height:180px">
+                                    <a href="~/home/single">@n1</a>
+                                    <h3>rs. @p1 </h3>
+                                </div>
+                                <div class="grid_1_of_4 images_1_of_4 products-info">
+                                    <img src="@url.content(path2)" style="height:180px">
+                                    <a href="~/home/single">@n2</a>
+                                    <h3>rs. @p2 </h3>
+                                </div>
+                                <div class="grid_1_of_4 images_1_of_4 products-info">
+                                    <img src="@url.content(path3)" style="height:180px">
+                                    <a href="~/home/single">@n3</a>
+                                    <h3>rs. @p3 </h3>
+
+                                </div>
+
+                            </div>
+                        }
+
+                    }
+
+                </div>
+            </div>
+        </div>*@
+
+    <div class="content-sidebar">
+        <h4>Categories</h4>
+        <ul>
+            <li><a href="~/Home/dell_laptops">DELL Laptops</a></li>
+            <li><a href="~/Home/samsung_laptops">Samsung Laptops</a></li>
+            <li><a href="~/Home/apple_laptops">Apple Laptops</a></li>
+            <li><a href="~/Home/hp_laptops">HP Laptops</a></li>
+        </ul>
+    </div>
+
+    <div class="clear"> </div>
+
+    @Html.Partial("_footer")
+</body>
+
+</html>
+

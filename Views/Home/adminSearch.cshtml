@@ -1,0 +1,178 @@
+﻿@{
+    ViewBag.Title = "adminSearch";
+}
+
+
+@using EADPostMid.Models;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Search</title>
+    <meta charset="utf‐8" />
+</head>
+<body>
+    @Html.Partial("_header")
+
+    @{
+        if (Session["login"] != "login")
+        {
+            <script>
+                @{
+            Response.Redirect("~/Home/loginP");
+                }
+                function myfun() {
+
+
+                    var i = document.getElementById('pass1').value;
+                    var j = document.getElementById('pass2').value;
+                    if (i != j) {
+                        alert("Beta Kidr?");
+                        alert("Passwords are not same!");
+                        return false;
+
+                    }
+                    return true;
+                }
+
+            </script>
+        }
+    }
+
+    <div class="clear"> </div>
+
+    <div class="wrap">
+        <div class="content">
+            <div class="content-grids">
+    <h1 style="text-align:left">Search</h1>
+
+    <div class="search-bar">
+        <form action="~/Home/adminSearch" method="get">
+            <input type="text" name="textBox" required><input type="submit" value="Search" />
+            <br> <br>                      <label>  Select Category: </label>
+            <input type="radio" name="category" value="laptop" required /> Laptops&nbsp;&nbsp;
+            <input type="radio" name="category" value="mobile" required /> Mobiles
+            <br><br>
+            <label>Search By:</label>
+            <input type="radio" name="searchBy" value="id" required /> ID&nbsp;&nbsp;
+            <input type="radio" name="searchBy" value="name" required /> Name
+        </form>
+    </div>
+
+    @{
+
+    mobAndLaptop ml = (mobAndLaptop)Model ;
+
+    //List<laptops> l = Model;
+    <table class="table table-striped">
+        @{
+            
+            if (ml.laptop != null && ml.mobile == null)
+            {
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Discription</th>
+                        <th>Price</th>
+                        <th>Year</th>
+                        <th>Model</th>
+                        <th>RAM</th>
+                        <th>ROM</th>
+                        <th>Processor</th>
+                        <th>Display Size</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+            }
+            else if (ml.mobile != null && ml.laptop == null)
+            {
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Discription</th>
+                        <th>Price</th>
+                        <th>Year</th>
+                        <th>Model</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+
+                    </tr>
+                </thead>
+            }
+            else
+            {
+                <div> Result Not found !! </div>
+            }
+        }
+
+        @{
+            if (ml.laptop != null)
+            {
+                foreach (var i in ml.laptop)
+                {
+                    <tbody>
+                        <tr>
+                            <td>@i.laptopId</td>
+                            <td>@i.name</td>
+                            <td>@i.desc</td>
+                            <td>@i.price</td>
+                            <td>@i.year</td>
+                            <td>@i.model</td>
+                            <td>@i.ram</td>
+                            <td>@i.rom</td>
+                            <td>@i.processor</td>
+                            <td>@i.display_size</td>
+
+                            <td><form action="~/Home/editLaptops/@i.laptopId"><div class="list-group"><button class="list-group-item">Edit</button></div></form></td>
+                            <td><form action="~/Home/deleteLaptops/@i.laptopId"><div class="list-group"><button class="list-group-item">Delete</button></div></form></td>
+
+                        </tr>
+                    </tbody>
+
+                }
+            }
+            
+                                                        
+                                        else  if (ml.mobile != null )
+                                                { 
+                                                foreach (var i in ml.mobile)
+                                                {
+                                                    <tbody>
+                                                <tr>
+                                                    <td>@i.mobId</td>
+                                                    <td>@i.name</td>
+                                                    <td>@i.desc</td>
+                                                    <td>@i.price</td>
+                                                    <td>@i.year</td>
+                                                    <td>@i.model</td>
+                                                    <td><form action="~/Home/editMobiles/@i.mobId"><div class="list-group"><button class="list-group-item">Edit</button></div></form></td>
+                                                    <td><form action="~/Home/deleteMobiles/@i.mobId"><div class="list-group"><button class="list-group-item">Delete</button></div></form></td>
+                                                </tr>
+                                               </tbody>
+                                                }
+
+                                                }
+                                          
+        }
+                            </table>
+
+        }
+
+
+        </div>
+        </div>
+    </div>
+
+    @Html.Partial("_adminPanel")
+
+    <div class="clear"> </div>
+
+    <div class="clear"> </div>
+
+    @Html.Partial("_footer")
+
+</body>
+</html>

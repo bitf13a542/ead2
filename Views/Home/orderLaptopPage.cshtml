@@ -1,0 +1,215 @@
+﻿@{
+    ViewBag.Title = "orderPage";
+}
+
+<h2>orderPage</h2>
+@using EADPostMid.Models;
+@model EADPostMid.Models.laptops
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Laptops</title>
+    <meta charset="utf‐8" />
+</head>
+<body>
+    @Html.Partial("_header")
+
+    @{
+        if (Session["login"] != "login")
+        {
+            <script>
+                @{
+            Response.Redirect("~/Home/loginP");
+                }
+                function myfun() {
+
+
+                    var i = document.getElementById('pass1').value;
+                    var j = document.getElementById('pass2').value;
+                    if (i != j) {
+                        alert("Beta Kidr?");
+                        alert("Passwords are not same!");
+                        return false;
+
+                    }
+                    return true;
+                }
+
+            </script>
+        }
+    }
+
+    <div class="clear"> </div>
+
+    <div class="wrap">
+        <div class="content">
+            <div class="content-grids">
+                <h1 style="text-align:left">Order Laptop</h1>
+                <div class="contact-form">
+
+                    @*@{using (Html.BeginForm("editMobilesCheck", "Home", FormMethod.Post,
+                        new { enctype = "multipart/form-data" }))*@
+                    @{
+
+                        <form action="~/Home/editLaptopsCheck/@Model.laptopId" method="get">
+
+                            @{
+
+                                <div class="form-group">
+                                    <label>Name:</label>
+                                    <input type="text" class="form-control" value="@Model.name" name="name" placeholder="e.g Samsung grand Prime" required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="comment">Description</label>
+                                    <textarea class="form-control" style="font-size:medium" name="desc" rows="5" id="comment">@Model.desc</textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Price in Rs. </label>
+                                    <input type="number" class="form-control" value="@Model.price" name="price" placeholder="e.g 10000 or 20000 etc " required />
+                                </div>
+                                <div class="form-group">
+                                    <label>Year </label>
+                                    <input type="text" class="form-control" value="@Model.year" name="year" required placeholder="e.g : 2016">
+                                </div>
+                                <div class="form-group">
+                                    <label>Model Name </label>
+                                    <input type="text" class="form-control" name="model" value="@Model.model" placeholder="GS-1706 etc" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>RAM </label>
+                                    <input type="text" class="form-control" name="ram" value="@Model.ram" placeholder="4GB etc" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>ROM </label>
+                                    <input type="text" class="form-control" name="rom" value="@Model.rom" placeholder="256GB etc" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Processor </label>
+                                    <input type="text" class="form-control" name="processor" value="@Model.processor" placeholder="1.7 Ghz etc" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Display Size </label>
+                                    <input type="text" class="form-control" name="displaySize" value="@Model.display_size" placeholder="17 inch etc" required>
+                                </div>
+
+                                <label>Company Name </label>
+                                <br>
+
+                                if (Model.company == "samsung")
+                                {
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" checked value="samsung" required> samsung
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" value="Q-mobile" required> Apple
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" value="G-five" required>HP
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" value="htc" required>DELL
+                                    </label>
+                                }
+                                else if (Model.company == "apple")
+                                {
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" value="samsung" required> samsung
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" checked value="Q-mobile" required> Apple
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" value="G-five" required>HP
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" value="htc" required>DELL
+                                    </label>
+                                }
+                                else if (Model.company == "hp")
+                                {
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" value="samsung" required> samsung
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" value="Q-mobile" required>Apple
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" checked value="G-five" required>HP
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" value="htc" required>DELL
+                                    </label>
+                                }
+                                else if (Model.company == "dell")
+                                {
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" value="samsung" required> samsung
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" value="Q-mobile" required> Apple
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" value="G-five" required>HP
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="company" checked value="htc" required>DELL
+                                    </label>
+                                }
+
+                            }
+
+                            <br><br>
+                            <input type="submit" value="Submit" onclick="return myfun()">
+
+                            <p>@ViewBag.Message</p>
+
+                        </form>
+
+                    }
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("_adminPanel")
+
+
+
+    @*if (Session["login"] == "login" && Session["person"] == "admin")
+            {
+
+                @Html.Partial("adminP")
+
+        <div class="col span_2_of_3" style="float:left">
+            <div class="contact-form">
+                <form style="text-align:center" action="~/Home/logout" method="get">
+                    <div><span><input type="submit" value="Logout"></span></div>
+                </form>
+            </div>
+        </div>
+            }
+            else if (Session["login"] == "login" && Session["person"] == "user")
+            {
+                @Html.Partial("userP")
+
+        <div class="col span_2_of_3" style="float:left">
+            <div class="contact-form">
+                <form style="text-align:center" action="~/Home/logout" method="get">
+                    <div><span><input type="submit" value="Logout"></span></div>
+                </form>
+            </div>
+        </div>
+        }*@
+
+    <div class="clear"> </div>
+
+    <div class="clear"> </div>
+
+    @Html.Partial("_footer")
+
+</body>
+</html>
